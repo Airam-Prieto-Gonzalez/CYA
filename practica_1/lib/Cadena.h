@@ -31,12 +31,12 @@ class Cadena {
   ~Cadena();
 
   const std::string& cadena() const;
-  const std::string alfabeto() const;
+  void alfabeto(std::ofstream& output_file) const;
   
   int longitud() const;
-  const std::string& inversa() const;
-  const std::set<std::string>& prefijos() const;
-  const std::set<std::string>& sufijos() const;
+  void inversa(std::ofstream& output_file) const;
+  void prefijos(std::ofstream& output_file) const;
+  void sufijos(std::ofstream& output_file) const;
 
   friend std::ostream& operator<<(std::ostream &out, const Cadena &cadena) {
     out << cadena.cadena();

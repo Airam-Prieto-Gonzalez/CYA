@@ -23,24 +23,10 @@
 #include <fstream>
 #include <vector>
 
-#include "Chain.h"
+#include "../lib/Cadena.h"
 
-void FuncionAlfabeto() {
-
-}
-
-void FuncionLongitud() {
-
-}
-
-void FuncionInversa() {
-
-}
-
-void FuncionPrefijos() {
-
-}
-
-void FuncionSufijos() {
-
-}
+void FuncionAlfabeto(std::vector<Cadena*>& cadenas, std::ofstream& output_file);
+void FuncionLongitud(std::vector<Cadena*>& cadenas, std::ofstream& output_file);
+void FuncionInversa(std::vector<Cadena*>& cadenas, std::ofstream& output_file);
+void FuncionPrefijos(std::vector<Cadena*>& cadenas, std::ofstream& output_file);
+void FuncionSufijos(std::vector<Cadena*>& cadenas, std::ofstream& output_file);

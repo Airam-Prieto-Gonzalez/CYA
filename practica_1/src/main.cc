@@ -23,6 +23,7 @@
 #include <sstream>
 
 #include "../lib/Cadena.h"
+#include "../lib/Utils.h"
 
 int main(int argc, char *argv[]) {
     if (argc != 4) {
@@ -56,32 +57,34 @@ int main(int argc, char *argv[]) {
             linea >> cadena >> alfabeto;
             cadenas.push_back(new Cadena(cadena, alfabeto));
         }
-        ////////////////////////////////////////
-
-        for (int i = 0; i < cadenas.size(); i++) {
-            std::cout << cadenas[i]->cadena() << std::endl;
-            std::cout << cadenas[i]->alfabeto() << std::endl;
-        }
-
-
-        ////////////////////////////////////////
         // SELECCIÓN DE OPCIÓN Y EJECUCIÓN DE LA MISMA
-        // std::cout << "Opcion seleccionada: " << opcode << std::endl;
-        // if (opcode == "alfabeto") {
-            
-        // } else if (opcode == "longitud") {
-            
-        // } else if (opcode == "inversa") {
-
-        // } else if (opcode == "prefijos") {
-
-        // } else if (opcode == "sufijos") {
-
-        // } else {
-        //     std::cout << "/// Opcion opcion introducida es desconocida." << std::endl;
-        //     std::cout << "Abortando..." << std::endl;
-        // }
-
+        std::cout << "Opcion seleccionada: " << opcode << std::endl;
+        if (opcode == "alfabeto") {
+            FuncionAlfabeto(cadenas, output_file);
+            std::cout << "/// Funcion alfabeto ejecutada con exito." << std::endl;
+        } else if (opcode == "longitud") {
+            FuncionLongitud(cadenas, output_file);
+            std::cout << "/// Funcion longitud ejecutada con exito." << std::endl;
+        } else if (opcode == "inversa") {
+            FuncionInversa(cadenas, output_file);
+            std::cout << "/// Funcion inversa ejecutada con exito." << std::endl;
+        } else if (opcode == "prefijos") {
+            FuncionPrefijos(cadenas, output_file);
+            std::cout << "/// Funcion prefijos ejecutada con exito." << std::endl;
+        } else if (opcode == "sufijos") {
+            FuncionSufijos(cadenas, output_file);
+            std::cout << "/// Funcion sufijos ejecutada con exito." << std::endl;
+        } else {
+            std::cout << "/// Opcion opcion introducida es desconocida." << std::endl;
+            std::cout << "Abortando..." << std::endl;
+        }
+        // CIERRE DE FICHEROS
+        input_file.close();
+        output_file.close();
+        // LIBERACIÓN DE MEMORIA
+        for (int i = 0; i < cadenas.size(); ++i) {
+            delete cadenas[i];
+        }
     }
     return 0;
 }

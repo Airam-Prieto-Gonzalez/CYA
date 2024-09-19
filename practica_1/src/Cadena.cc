@@ -36,28 +36,56 @@ const std::string& Cadena::cadena() const {
   return cadena_;
 }
 
-const std::string Cadena::alfabeto() const {
-    std::string alfabeto;
-    for (auto it = alfabeto_.begin(); it != alfabeto_.end(); it++) {
-        alfabeto += *it;
+void Cadena::alfabeto(std::ofstream& output_file) const {
+    output_file << "{";
+    for (auto it = alfabeto_.begin(); it != alfabeto_.end(); ++it) {
+        output_file << *it;
+        if (std::next(it) != alfabeto_.end()) {
+            output_file << ", ";
+        }
     }
-    return alfabeto;
+    output_file << "}" << std::endl;
+    return;
 }
 
 int Cadena::longitud() const {
-  return cadena_.size();
+  return cadena_ != "&" ? cadena_.size() : 0;
 }
 
-// const std::string& Cadena::inversa() const {
-//   std::string inversa;
-// }
+void Cadena::inversa(std::ofstream& output_file) const {
+  std::string inversa;
+  for (int i = cadena_.size() - 1; i >= 0; i--) {
+    inversa += cadena_[i];
+  }
+  output_file << inversa << std::endl;
+}
 
-// const std::set<std::string>& Cadena::prefijos() const {
-//   std::vector<std::string> prefijos;
+void Cadena::prefijos(std::ofstream& output_file) const {
+  if (cadena_ == "&") {
+    output_file << "{&}" << std::endl;
+    return;
+  }
+  output_file << "{&, ";
+  for (int i = 1; i <= cadena_.size() - 1; i++) {
+    for (int j = 0; j < i; j++) {
+      output_file << cadena_[j];
+    }
+    output_file << ", ";
+  }
+  output_file << cadena_ << "}" << std::endl;
+}
 
-// }
-
-// const std::set<std::string>& Cadena::sufijos() const {
-//   std::vector<std::string> sufijos;
-
-// }
+void Cadena::sufijos(std::ofstream& output_file) const {
+  if (cadena_ == "&") {
+    output_file << "{&}" << std::endl;
+    return;
+  }
+  output_file << "{&, ";
+  for (int i = cadena_.size() - 1; i >= 0; i--) {
+    for (int j = cadena_.size() - 1; j > i; j--) {
+      output_file << cadena_[j];
+    }
+    output_file << ", ";
+  }
+  output_file << cadena_ << "}" << std::endl;
+}
