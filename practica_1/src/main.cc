@@ -29,12 +29,7 @@
 
 int main(int argc, char *argv[]) {
   if (argc < 4) {
-    std::cout << "/// Error: Ha introducido erróneamente los parámetros"
-              << std::endl;
-    std::cout
-        << "/// Pruebe a ejecutar el programa --help para mayor información"
-        << std::endl;
-    if (argc == 2 && argv[1] == "--help") {
+    if (argc == 2 && std::string(argv[1]) == "--help") {
       std::cout
           << "/// Uso: ./cadena <fichero_entrada> <fichero_salida> <opcion>"
           << std::endl;
@@ -44,6 +39,12 @@ int main(int argc, char *argv[]) {
       std::cout << "/// Elfichero de entrada debe tener en cada linea una "
                    "cadena y el alfabeto sobre el que esta definida"
                 << std::endl;
+    } else {
+      std::cout << "/// Error: Ha introducido erróneamente los parámetros"
+                << std::endl;
+      std::cout
+          << "/// Pruebe a ejecutar el programa --help para mayor información"
+          << std::endl;
     }
     return 1;
     // completar con las instrucciones del programa
