@@ -24,7 +24,7 @@ Cadena::Cadena() { cadena_ = "&"; }
 Cadena::Cadena(const std::string &cadena, const std::string &alfabeto) {
   cadena_ = cadena;
   for (int i = 0; i < alfabeto.size(); i++) {
-    alfabeto_.insert(alfabeto[i]);
+    alfabeto_.insertar(alfabeto[i]);
   }
 }
 
@@ -34,9 +34,9 @@ const std::string &Cadena::cadena() const { return cadena_; }
 
 void Cadena::alfabeto(std::ofstream &output_file) const {
   output_file << "{";
-  for (auto it = alfabeto_.begin(); it != alfabeto_.end(); ++it) {
+  for (auto it = alfabeto_.alfabeto().begin(); it != alfabeto_.alfabeto().end(); ++it) {
     output_file << *it;
-    if (std::next(it) != alfabeto_.end()) {
+    if (std::next(it) != alfabeto_.alfabeto().end()) {
       output_file << ", ";
     }
   }

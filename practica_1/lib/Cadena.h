@@ -24,6 +24,8 @@
 #include <set>
 #include <vector>
 
+#include "Alfabeto.h"
+
 /// @brief Clase Cadena: representa la sucesion de caracteres basados en un
 /// alfabeto
 class Cadena {
@@ -32,7 +34,7 @@ public:
   Cadena();
   /// @brief Contructor de la clase Cadena
   /// @param cadena string que representa la cadena
-  /// @param alfabeto conjunto que representa el alfabeto de la cadena
+  /// @param alfabeto string que representa el alfabeto de la cadena
   Cadena(const std::string &cadena, const std::string &alfabeto);
   /// @brief Destructor de la clase Cadena
   ~Cadena();
@@ -74,5 +76,5 @@ public:
 
 private:
   std::string cadena_;
-  std::set<char> alfabeto_;
+  Alfabeto alfabeto_;
 };
