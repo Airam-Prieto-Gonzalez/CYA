@@ -1,6 +1,6 @@
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
-// Grado en Ingeniería Inform´atica
+// Grado en Ingeniería Informática
 // Asignatura: Computabilidad y Algoritmia
 // Curso: 3º
 // Práctica 2: Cadenas y lenguajes
@@ -8,9 +8,9 @@
 // Correo: alu0101546377@ull.edu.es
 // Fecha: 17/09/2024
 
-// Archivo cya-P02-strings.cc:  programa cliente.
-//                              Contiene la función main del proyecto que usa las clases X e Y
-//                              para ... (indicar brevemente el objetivo)
+// Archivo Utils.cc:  Definición de las funciones del programa.
+//                              Contiene la definición de las funciones que se encargan de realizar
+//                              las principales operaciones con las cadenas y alfabetos.
 
 // Referencias:
 // Enlaces de interés:

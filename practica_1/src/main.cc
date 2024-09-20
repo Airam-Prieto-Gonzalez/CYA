@@ -1,6 +1,6 @@
 // Universidad de La Laguna
 // Escuela Superior de Ingeniería y Tecnología
-// Grado en Ingeniería Inform´atica
+// Grado en Ingeniería Informática
 // Asignatura: Computabilidad y Algoritmia
 // Curso: 3º
 // Práctica 2: Cadenas y lenguajes
@@ -8,14 +8,15 @@
 // Correo: alu0101546377@ull.edu.es
 // Fecha: 17/09/2024
 
-// Archivo cya-P02-strings.cc:  programa cliente.
-//                              Contiene la función main del proyecto que usa las clases X e Y
-//                              para ... (indicar brevemente el objetivo)
+// Archivo main.cc:  programa cliente.
+//                              Contiene la función main del proyecto que usa la clase Cadena
+//                              para operar con cadenas y alfabetos representados en el fichero
+//                              de entrada y escribir los resultados en el fichero de salida.
 
 // Referencias:
 // Enlaces de interés:
 // Historial de revisiones
-// 17/09/2024 - Creación (primera versión) del código
+// 17/09/2024 - Creación (primera versión) del código 
 
 #include <iostream>
 #include <fstream>
@@ -26,8 +27,14 @@
 #include "../lib/Utils.h"
 
 int main(int argc, char *argv[]) {
-    if (argc != 4) {
+    if (argc < 4) {
         std::cout << "/// Error: Ha introducido erróneamente los parámetros" << std::endl;
+        std::cout << "/// Pruebe a ejecutar el programa --help para mayor información" << std::endl;
+        if (argc == 2 && argv[1] == "--help") {
+            std::cout << "/// Uso: ./cadena <fichero_entrada> <fichero_salida> <opcion>" << std::endl;
+            std::cout << "/// Opciones disponibles: alfabeto, longitud, inversa, prefijos, sufijos" << std::endl;
+            std::cout << "/// Elfichero de entrada debe tener en cada linea una cadena y el alfabeto sobre el que esta definida" << std::endl;
+        }
         return 1;
         // completar con las instrucciones del programa
     } else {
