@@ -9,43 +9,49 @@
 // Fecha: 17/09/2024
 
 // Archivo Utils.cc:  Definición de las funciones del programa.
-//                              Contiene la definición de las funciones que se encargan de realizar
-//                              las principales operaciones con las cadenas y alfabetos.
+//                              Contiene la definición de las funciones que se
+//                              encargan de realizar las principales operaciones
+//                              con las cadenas y alfabetos.
 
 // Referencias:
 // Enlaces de interés:
 // Historial de revisiones
 // 17/09/2024 - Creación (primera versión) del código
 
-#include "../lib/Cadena.h"
 #include "../lib/Utils.h"
+#include "../lib/Cadena.h"
 
-void FuncionAlfabeto(std::vector<Cadena*>& cadenas, std::ofstream& output_file) {
-    for (int i = 0; i < cadenas.size(); ++i) {
-        cadenas[i]->alfabeto(output_file);
-    }
+void FuncionAlfabeto(std::vector<Cadena *> &cadenas,
+                     std::ofstream &output_file) {
+  for (int i = 0; i < cadenas.size(); ++i) {
+    cadenas[i]->alfabeto(output_file);
+  }
 }
 
-void FuncionLongitud(std::vector<Cadena*>& cadenas, std::ofstream& output_file) {
-    for (int i = 0; i < cadenas.size(); ++i) {
-        output_file << cadenas[i]->longitud() << std::endl;
-    }
+void FuncionLongitud(std::vector<Cadena *> &cadenas,
+                     std::ofstream &output_file) {
+  for (int i = 0; i < cadenas.size(); ++i) {
+    output_file << cadenas[i]->longitud() << std::endl;
+  }
 }
 
-void FuncionInversa(std::vector<Cadena*>& cadenas, std::ofstream& output_file) {
-    for (int i = 0; i < cadenas.size(); ++i) {
-        cadenas[i]->inversa(output_file);
-    }
+void FuncionInversa(std::vector<Cadena *> &cadenas,
+                    std::ofstream &output_file) {
+  for (int i = 0; i < cadenas.size(); ++i) {
+    cadenas[i]->inversa(output_file);
+  }
 }
 
-void FuncionPrefijos(std::vector<Cadena*>& cadenas, std::ofstream& output_file) {
-    for (int i = 0; i < cadenas.size(); ++i) {
-        cadenas[i]->prefijos(output_file);
-    }
+void FuncionPrefijos(std::vector<Cadena *> &cadenas,
+                     std::ofstream &output_file) {
+  for (int i = 0; i < cadenas.size(); ++i) {
+    cadenas[i]->prefijos(output_file);
+  }
 }
 
-void FuncionSufijos(std::vector<Cadena*>& cadenas, std::ofstream& output_file) {
-    for (int i = 0; i < cadenas.size(); ++i) {
-        cadenas[i]->sufijos(output_file);
-    }
+void FuncionSufijos(std::vector<Cadena *> &cadenas,
+                    std::ofstream &output_file) {
+  for (int i = 0; i < cadenas.size(); ++i) {
+    cadenas[i]->sufijos(output_file);
+  }
 }
