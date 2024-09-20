@@ -34,9 +34,9 @@ const std::string &Cadena::cadena() const { return cadena_; }
 
 void Cadena::alfabeto(std::ofstream &output_file) const {
   output_file << "{";
-  for (auto it = alfabeto_.alfabeto().begin(); it != alfabeto_.alfabeto().end(); ++it) {
+  for (auto it = alfabeto_.get_alfabeto().begin(); it != alfabeto_.get_alfabeto().end(); ++it) {
     output_file << *it;
-    if (std::next(it) != alfabeto_.alfabeto().end()) {
+    if (std::next(it) != alfabeto_.get_alfabeto().end()) {
       output_file << ", ";
     }
   }

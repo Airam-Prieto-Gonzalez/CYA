@@ -19,22 +19,16 @@
 
 #include "../lib/Alfabeto.h"
 
-    Alfabeto::Alfabeto() {
-        alfabeto_.insert('a');
-    }
+Alfabeto::Alfabeto() {}
 
-    Alfabeto::Alfabeto(const std::string &alfabeto) {
-        for (int i = 0; i < alfabeto.size(); i++) {
-            alfabeto_.insert(alfabeto[i]);
-        }
-    }
+Alfabeto::Alfabeto(const std::string &alfabeto) {
+  for (int i = 0; i < alfabeto.size(); i++) {
+    alfabeto_.insert(alfabeto[i]);
+  }
+}
 
-    Alfabeto::~Alfabeto() {}
+Alfabeto::~Alfabeto() {}
 
-    const std::unordered_set<char> &Alfabeto::alfabeto() const {
-        return alfabeto_;
-    }
+const std::set<char> &Alfabeto::get_alfabeto() const { return alfabeto_; }
 
-    void Alfabeto::insertar(const char &caracter) {
-        alfabeto_.insert(caracter);
-    }
+void Alfabeto::insertar(const char &caracter) { alfabeto_.insert(caracter); }

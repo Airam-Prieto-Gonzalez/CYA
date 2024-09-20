@@ -20,20 +20,26 @@
 #pragma once
 
 #include <iostream>
+#include <set>
 #include <string>
-#include <unordered_set>
 
 class Alfabeto {
- public:
-    Alfabeto();
-    Alfabeto(const std::string &alfabeto);
-    ~Alfabeto();
-
-    const std::unordered_set<char> &alfabeto() const;
-
-    void insertar(const char &caracter);
-    // void borrar(const char &caracter);
-    // bool pertenece(const char &caracter) const;
- private:
-    std::unordered_set<char> alfabeto_;
+public:
+  /// @brief Constructor por defecto de la clase Alfabeto.
+  Alfabeto();
+  /// @brief Constructor de la clase Alfabeto.
+  /// @param alfabeto String que contiene los caracteres del alfabeto.
+  Alfabeto(const std::string &alfabeto);
+  /// @brief Destructor de la clase Alfabeto.
+  ~Alfabeto();
+  /// @brief Getter de la clase Alfabeto.
+  /// @return El atributo alfabeto_ de la clase Alfabeto.
+  const std::set<char> &get_alfabeto() const;
+  /// @brief Método de la clase Alfabeto que inserta un caracter en el alfabeto.
+  /// @param caracter el caracter a insertar en el alfabeto.
+  void insertar(const char &caracter);
+  // void borrar(const char &caracter);
+  // bool pertenece(const char &caracter) const;
+private:
+  std::set<char> alfabeto_;
 };
