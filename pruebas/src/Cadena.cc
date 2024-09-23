@@ -18,6 +18,7 @@
 // 17/09/2024 - Creación (primera versión) del código
 
 #include "../lib/Cadena.h"
+#include "../lib/Utils.h"
 
 Cadena::Cadena() { cadena_ = "&"; }
 
@@ -92,7 +93,7 @@ void Cadena::subcadenas(std::ofstream &output_file) const {
     output_file << "{&}" << std::endl;
     return;
   }
-  std::set<std::string> subcadenas;
+  std::set<std::string> subcadenas {};
   for (int i = 0; i < cadena_.size(); ++i) {
     for (int j = i; j < cadena_.size(); ++j) {
       subcadenas.insert(cadena_.substr(i, j - i + 1));
@@ -110,7 +111,11 @@ void Cadena::subsecuencias(std::ofstream &output_file) const {
     output_file << "{&}" << std::endl;
     return;
   }
+  std::set<std::string> subsecuencias {};
+  CalcularSubsecuencias(cadena_, 0, subsecuencias);
   output_file << "{&";
-  // iterar las subsecuencias
-  output_file << "}" << std::endl;
+  for (auto it = subsecuencias.begin(); it != subsecuencias.end(); ++it) {
+    output_file << ", " << *it;
+  }
+  output_file << "}  " << subsecuencias.size() << std::endl;
 }

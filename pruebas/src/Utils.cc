@@ -69,3 +69,20 @@ void FuncionSubsecuencias(std::vector<Cadena *> &cadenas,
     cadenas[i]->subsecuencias(output_file);
   }
 }
+
+void CalcularSubsecuencias(const std::string &cadena, int index, std::set<std::string> &subsecuencias) {
+  for (int i = 0; i < cadena.size(); ++i) {
+    std::string cadena_aux {cadena[i]};
+    subsecuencias.insert(cadena_aux);
+    for (int j = i + 1; j < cadena.size(); ++j) {
+      std::string cadena_aux {cadena[i]};
+      cadena_aux += cadena[j];
+      subsecuencias.insert(cadena_aux);
+      for (int k = j + 1; k < cadena.size(); ++k) {
+        cadena_aux += cadena[k];
+        subsecuencias.insert(cadena_aux);
+      }
+    }
+  }
+}
+
