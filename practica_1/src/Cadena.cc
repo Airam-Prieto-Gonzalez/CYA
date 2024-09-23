@@ -76,10 +76,13 @@ void Cadena::sufijos(std::ofstream &output_file) const {
   }
   output_file << "{&, ";
   for (int i = cadena_.size() - 1; i >= 0; i--) {
-    for (int j = cadena_.size() - 1; j > i; j--) {
+    for (int j = cadena_.size() - 1; j >= i; j--) {
       output_file << cadena_[j];
     }
+    if (i != 0)
     output_file << ", ";
+    else {
+      output_file << "}" << std::endl;;
+    }
   }
-  output_file << cadena_ << "}" << std::endl;
 }
