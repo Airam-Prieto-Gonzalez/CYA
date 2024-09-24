@@ -70,19 +70,13 @@ void FuncionSubsecuencias(std::vector<Cadena *> &cadenas,
   }
 }
 
-void CalcularSubsecuencias(const std::string &cadena, int index, std::set<std::string> &subsecuencias) {
-  for (int i = 0; i < cadena.size(); ++i) {
-    std::string cadena_aux {cadena[i]};
-    subsecuencias.insert(cadena_aux);
-    for (int j = i + 1; j < cadena.size(); ++j) {
-      std::string cadena_aux {cadena[i]};
-      cadena_aux += cadena[j];
-      subsecuencias.insert(cadena_aux);
-      for (int k = j + 1; k < cadena.size(); ++k) {
-        cadena_aux += cadena[k];
-        subsecuencias.insert(cadena_aux);
-      }
-    }
-  }
-}
 
+// No supe hacerlo en casa, SOLUCION DE CHAT GPT
+void CalcularSubsecuencias(const std::string &cadena, std::string out, std::set<std::string> &subsecuencias) {
+  if (cadena.empty()) {
+    subsecuencias.insert(out);
+    return;
+  }
+  CalcularSubsecuencias(cadena.substr(1), out + cadena[0], subsecuencias);
+  CalcularSubsecuencias(cadena.substr(1), out, subsecuencias);
+}

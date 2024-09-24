@@ -112,7 +112,8 @@ void Cadena::subsecuencias(std::ofstream &output_file) const {
     return;
   }
   std::set<std::string> subsecuencias {};
-  CalcularSubsecuencias(cadena_, 0, subsecuencias);
+  CalcularSubsecuencias(cadena_, "", subsecuencias);
+  subsecuencias.extract("");
   output_file << "{&";
   for (auto it = subsecuencias.begin(); it != subsecuencias.end(); ++it) {
     output_file << ", " << *it;

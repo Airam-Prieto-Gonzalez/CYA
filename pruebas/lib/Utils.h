@@ -62,4 +62,4 @@ void FuncionSufijos(std::vector<Cadena *> &cadenas, std::ofstream &output_file);
 
 void FuncionSubcadenas(std::vector<Cadena *> &cadenas, std::ofstream &output_file);
 void FuncionSubsecuencias(std::vector<Cadena *> &cadenas, std::ofstream &output_file);
-void CalcularSubsecuencias(const std::string &cadena, int index,std::set<std::string> &subsecuencias);
+void CalcularSubsecuencias(const std::string &cadena, std::string out, std::set<std::string> &subsecuencias);
