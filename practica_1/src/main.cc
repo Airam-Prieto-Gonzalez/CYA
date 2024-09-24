@@ -94,6 +94,9 @@ int main(int argc, char *argv[]) {
     } else if (opcode == "sufijos") {
       FuncionSufijos(cadenas, output_file);
       std::cout << "/// Funcion sufijos ejecutada con exito." << std::endl;
+    } else if (opcode == "palimdromo") {
+      FuncionPalim(cadenas, output_file);
+      std::cout << "/// Funcion modi ejecutada con exito." << std::endl;
     } else {
       std::cout << "/// Opcion opcion introducida es desconocida." << std::endl;
       std::cout << "Abortando..." << std::endl;

@@ -64,6 +64,10 @@ public:
   /// @param output_file Descriptor del fichero de salida donde se escribirán
   /// los sufijos
   void sufijos(std::ofstream &output_file) const;
+  /// @brief Método que imprime los si las cadenas son palimdromas
+  /// @param output_file Descriptor del fichero de salida donde se escribirán
+  /// los resultados
+  void ispalim(std::ofstream &output_file) const;
 
   /// @brief Sobrecarga del operador de salida
   /// @param out referencia al flujo de salida

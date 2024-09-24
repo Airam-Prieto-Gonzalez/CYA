@@ -58,3 +58,10 @@ void FuncionPrefijos(std::vector<Cadena *> &cadenas,
 /// @param output_file el descriptor del fichero de salida donde se escribirán
 /// los resultados
 void FuncionSufijos(std::vector<Cadena *> &cadenas, std::ofstream &output_file);
+
+/// @brief Función encargada de imprimir si las cadenas recogidas son palimdromos
+/// en el fichero de salida
+/// @param cadenas vector donde se encuentran las cadenas con las que trabajar
+/// @param output_file el descriptor del fichero de salida donde se escribirán
+/// los resultados
+void FuncionPalim(std::vector<Cadena *> &cadenas, std::ofstream &output_file);

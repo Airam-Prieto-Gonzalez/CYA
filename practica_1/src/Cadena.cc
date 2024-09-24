@@ -86,3 +86,21 @@ void Cadena::sufijos(std::ofstream &output_file) const {
     }
   }
 }
+
+void Cadena::ispalim(std::ofstream &output_file) const {
+  std::string inverted_chain;
+  if (cadena_ == "&") {
+    output_file << "True" << std::endl;
+    return;
+  }
+  for (int i = cadena_.size() - 1; i >= 0; i--) {
+    inverted_chain += cadena_[i];
+  }
+  if (inverted_chain == cadena_) {
+    output_file << "True" << std::endl;
+  }
+  if (inverted_chain != cadena_) {
+    output_file << "False" << std::endl;
+  }
+  return;
+}

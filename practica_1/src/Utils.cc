@@ -55,3 +55,9 @@ void FuncionSufijos(std::vector<Cadena *> &cadenas,
     cadenas[i]->sufijos(output_file);
   }
 }
+
+void FuncionPalim(std::vector<Cadena *> &cadenas, std::ofstream &output_file) {
+  for (int i = 0; i < cadenas.size(); ++i) {
+    cadenas[i]->ispalim(output_file);
+  }
+}
