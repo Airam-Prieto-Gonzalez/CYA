@@ -53,14 +53,8 @@ int main(int argc, char *argv[]) {
     std::string filein{argv[1]};
     std::string fileout{argv[2]};
     // APERTURA DE FICHEROS
-    std::ifstream input_file{filein};
     std::ofstream output_file{fileout};
     // COMPROBACIÓN DE APERTURA DE FICHEROS
-    if (!input_file.is_open()) {
-      std::cout << "/// Error: No se ha podido abrir el fichero de entrada."
-                << std::endl;
-      return 1;
-    }
     if (!output_file.is_open()) {
       std::cout << "/// Error: No se ha podido abrir el fichero de salida."
                 << std::endl;
@@ -68,10 +62,9 @@ int main(int argc, char *argv[]) {
     }
     // EJECUCIÓN DEL ANALISIS
     CodeAnalyser code_analyser;
-    code_analyser.AnalyseCode(input_file);
+    code_analyser.AnalyseCode(filein);
     code_analyser.PrintAnalysis(output_file);
     // CIERRE DE FICHEROS
-    input_file.close();
     output_file.close();
     // LIBERACIÓN DE MEMORIA
   }

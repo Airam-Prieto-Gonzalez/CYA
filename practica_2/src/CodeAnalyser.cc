@@ -127,8 +127,10 @@ void CodeAnalyser::AnalyseCode(std::string &input_file_name) {
         if (std::regex_search(line, for_regex)) {
             set_loop("for", line_number);
         } else if(std::regex_search(line, variable_int_regex)) {
+            line = line.substr(line.find("int") + 4, line.size());
             set_variable_int(line_number, line);
         } else if(std::regex_search(line, variable_double_regex)) {
+            line = line.substr(line.find("double") + 7, line.size());
             set_variable_double(line_number, line);
         }
         if(std::regex_search(line, monoline_comment_regex)) {
@@ -145,6 +147,7 @@ void CodeAnalyser::PrintAnalysis(std::ofstream &output_file) {
     if (get_multiline_comments().size() > 0) {
         output_file << get_multiline_comments().begin()->second << std::endl;
     }
+    output_file << std::endl;
     output_file << "VARIABLES:" << std::endl;
     for (auto variable : get_variables_int()) {
         output_file << "[LINE " << variable.first << "] INT: " << variable.second << std::endl;
@@ -157,7 +160,7 @@ void CodeAnalyser::PrintAnalysis(std::ofstream &output_file) {
     output_file << "STATEMENTS:" << std::endl;
     for (auto loop : get_loops()) {
         for (auto line : loop.second) {
-            output_file << "[LINE " << line << "] LOOP" << loop.first << std::endl;
+            output_file << "[LINE " << line << "] LOOP: " << loop.first << std::endl;
         }
     }
     output_file << std::endl;    

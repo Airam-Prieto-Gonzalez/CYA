@@ -1,16 +1,6 @@
-Main: 1
-Variables int: 
-Line: 16 Variable:     int factorial = 1;
-Line: 26 Variable:   int limit;
-Variables double: 
-Loops: 
-Loop: for Lines: 8 17 28 
-Monoline comments: 
-Line: 6 Comment: // Returns the factorial of the argument
-Multiline comments: 
-Lines: 1 - 10
-
- Comment: /*
+PROGRAM: files/code.cc
+DESCRIPTION:
+/*
  * Universidad de La Laguna
  * Escuela Superior de Ingenieria y Tecnologia
  * Informatica Basica
@@ -19,4 +9,22 @@ Lines: 1 - 10
  * Version 1: Funcion factorial
  *
  * @see https :// github . com / IB -2023 -2024/ IB - class - code - examples /
+ */
 
+VARIABLES:
+[LINE 16] INT: factorial = 1;
+[LINE 26] INT: limit;
+
+
+STATEMENTS:
+[LINE 8] LOOP: for
+[LINE 17] LOOP: for
+[LINE 28] LOOP: for
+
+MAIN: 
+True
+
+COMMENTS:
+[LINES 1 - 10] COMMENT: DESCRIPTION
+
+[LINE 6] COMMENT: // Returns the factorial of the argument
