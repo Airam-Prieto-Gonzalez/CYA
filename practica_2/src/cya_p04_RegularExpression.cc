@@ -8,16 +8,14 @@
 // Correo: alu0101546377@ull.edu.es
 // Fecha: 17/09/2024
 
-// Archivo main.cc:  programa cliente.
-//                              Contiene la función main del proyecto que usa la
-//                              clase Cadena para operar con cadenas y alfabetos
-//                              representados en el fichero de entrada y
-//                              escribir los resultados en el fichero de salida.
+// Archivo cya_p04_RegularExpression.cc:  programa cliente.
+//                                        Contiene la implementación del programa cliente que analiza un archivo de texto
+//                                        y almacena información relevante en un archivo de salida.
 
 // Referencias:
 // Enlaces de interés:
 // Historial de revisiones
-// 17/09/2024 - Creación (primera versión) del código
+// 05/10/2024 - Creación (primera versión) del código
 
 #include <fstream>
 #include <iostream>

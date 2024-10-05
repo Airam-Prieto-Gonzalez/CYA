@@ -1,3 +1,23 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 3º
+// Práctica 2: Cadenas y lenguajes
+// Autor: Airam Prieto González
+// Correo: alu0101546377@ull.edu.es
+// Fecha: 05/10/2024
+
+// Archivo CodeAnalyser.cc:     Implementación de la clase CodeAnalyser.
+//                              Contiene la implementación de los métodos de la clase CodeAnalyser
+//                              que analizan un archivo de texto y almacenan información relevante
+//                              en atributos de la clase.
+
+// Referencias:
+// Enlaces de interés:
+// Historial de revisiones
+// 4/10/2024 - Creación (primera versión) del código
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -7,27 +27,31 @@
 
 #include "../lib/CodeAnalyser.h"
 
+const std::string& CodeAnalyser::get_filename() const {
+    return filename_;
+}
+
 bool CodeAnalyser::get_main() const {
     return exist_main_;
 }
 
-std::map<int, std::string> CodeAnalyser::get_variables_int() const {
+const std::map<int, std::string>& CodeAnalyser::get_variables_int() const {
     return variables_int_;
 }
 
-std::map<int, std::string> CodeAnalyser::get_variables_double() const {
+const std::map<int, std::string>& CodeAnalyser::get_variables_double() const {
     return variables_double_;
 }
 
-std::map<std::string, std::set<int>> CodeAnalyser::get_loops() const {
+const std::map<std::string, std::set<int>>& CodeAnalyser::get_loops() const {
     return loops_;
 }
 
-std::map<int, std::string> CodeAnalyser::get_monoline_comments() const {
+const std::map<int, std::string>& CodeAnalyser::get_monoline_comments() const {
     return monoline_comments_;
 }
 
-std::map<std::pair<int,int>, std::string> CodeAnalyser::get_multiline_comments() const {
+const std::map<std::pair<int,int>, std::string>& CodeAnalyser::get_multiline_comments() const {
     return multiline_comments_;
 }
 
@@ -55,7 +79,18 @@ void CodeAnalyser::set_multiline_comment(std::pair<int,int> lines, std::string c
     multiline_comments_[lines] = comment;
 }
 
-void CodeAnalyser::AnalyseCode(std::ifstream &input_file) {
+void CodeAnalyser::set_filename(std::string filename) {
+    filename_ = filename;
+}
+
+void CodeAnalyser::AnalyseCode(std::string &input_file_name) {
+    std::ifstream input_file{input_file_name};
+    if (!input_file.is_open()) {
+        std::cout << "/// Error: No se ha podido abrir el fichero de entrada."
+                  << std::endl;
+        return;
+    }
+    set_filename(input_file_name);
     std::string line;
     std::regex main_regex("int main\\(.*\\) \\{");
     std::regex variable_int_regex("int .*;");
@@ -101,32 +136,48 @@ void CodeAnalyser::AnalyseCode(std::ifstream &input_file) {
         }
         line_number++;
     }
+    input_file.close();
 }
 
 void CodeAnalyser::PrintAnalysis(std::ofstream &output_file) {
-    output_file << "Main: " << get_main() << std::endl;
-    output_file << "Variables int: " << std::endl;
-    for(auto &variable : get_variables_int()) {
-        output_file << "Line: " << variable.first << " Variable: " << variable.second << std::endl;
+    output_file << "PROGRAM: " << get_filename() << std::endl;
+    output_file << "DESCRIPTION:" << std::endl;
+    if (get_multiline_comments().size() > 0) {
+        output_file << get_multiline_comments().begin()->second << std::endl;
     }
-    output_file << "Variables double: " << std::endl;
-    for(auto &variable : get_variables_double()) {
-        output_file << "Line: " << variable.first << " Variable: " << variable.second << std::endl;
+    output_file << "VARIABLES:" << std::endl;
+    for (auto variable : get_variables_int()) {
+        output_file << "[LINE " << variable.first << "] INT: " << variable.second << std::endl;
     }
-    output_file << "Loops: " << std::endl;
-    for(auto &loop : get_loops()) {
-        output_file << "Loop: " << loop.first << " Lines: ";
-        for(auto &line : loop.second) {
-            output_file << line << " ";
+    output_file << std::endl;
+    for (auto variable : get_variables_double()) {
+        output_file << "[LINE " << variable.first << "] DOUBLE: " << variable.second << std::endl;
+    }
+    output_file << std::endl;
+    output_file << "STATEMENTS:" << std::endl;
+    for (auto loop : get_loops()) {
+        for (auto line : loop.second) {
+            output_file << "[LINE " << line << "] LOOP" << loop.first << std::endl;
         }
-        output_file << std::endl;
     }
-    output_file << "Monoline comments: " << std::endl;
-    for(auto &comment : get_monoline_comments()) {
-        output_file << "Line: " << comment.first << " Comment: " << comment.second << std::endl;
+    output_file << std::endl;    
+    output_file << "MAIN: " << std::endl;
+    if (get_main()) {
+        output_file << "True" << std::endl;
+    } else {
+        output_file << "False" << std::endl;
     }
-    output_file << "Multiline comments: " << std::endl;
-    for(auto &comment : get_multiline_comments()) {
-        output_file << "Lines: " << comment.first.first << " - " << comment.first.second << " Comment: " << std::endl << std::endl << comment.second << std::endl;
+    output_file << std::endl;
+    output_file << "COMMENTS:" << std::endl;
+    for (auto comment : get_multiline_comments()) {
+        if (comment.first.first == 1) {
+            output_file << "[LINES " << comment.first.first << " - " << comment.first.second << "] COMMENT: DESCRIPTION" << std::endl;
+        } else {
+            output_file << "[LINES " << comment.first.first << " - " << comment.first.second << "] COMMENT: " << comment.second << std::endl;
+        }
+    }
+    output_file << std::endl;
+    for (auto comment : get_monoline_comments()) {
+        output_file << "[LINE " << comment.first << "] COMMENT: " << comment.second << std::endl;
     }
 }
