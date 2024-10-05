@@ -1,0 +1,17 @@
+////////////////////////////////////////////////////////////////////////////
+El programa recibe como entrada:
+    - La ruta del fichero de entrada
+    - La ruta del fichero de salida
+
+El fichero de entrada debe tener código en C++ como 
+contenido, este debe ser sintácticamente correcto.
+
+El programa se encargara de, mediante el uso de expresiones
+regulares, analizarlo y volcar dicho analisis en el 
+fichero de salida.
+
+Un ejemplo de ejecución sería:
+
+    ./cya_p04_RegularExpressions ../files/code.cc ../files/codescheme.txt
+
+////////////////////////////////////////////////////////////////////////////
