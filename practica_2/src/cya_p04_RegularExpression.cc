@@ -9,8 +9,11 @@
 // Fecha: 17/09/2024
 
 // Archivo cya_p04_RegularExpression.cc:  programa cliente.
-//                                        Contiene la implementación del programa cliente que analiza un archivo de texto
-//                                        y almacena información relevante en un archivo de salida.
+//                                        Contiene la implementación del
+//                                        programa cliente que analiza un
+//                                        archivo de texto y almacena
+//                                        información relevante en un archivo de
+//                                        salida.
 
 // Referencias:
 // Enlaces de interés:

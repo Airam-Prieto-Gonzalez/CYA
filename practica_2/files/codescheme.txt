@@ -12,7 +12,7 @@ DESCRIPTION:
  */
 
 VARIABLES:
-[LINE 16] INT:  = 1;
+[LINE 16] INT: factorial = 1;
 
 
 STATEMENTS:
