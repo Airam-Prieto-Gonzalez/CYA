@@ -29,7 +29,7 @@ int Factorial(int number) {
     return factorial;
   }
 }
-
+/*
 int main() {
   std ::cout << " Introduzca el numero de factoriales a calcular : ";
   int limit;
@@ -39,3 +39,5 @@ int main() {
   }
   return 0;
 }
+
+*/

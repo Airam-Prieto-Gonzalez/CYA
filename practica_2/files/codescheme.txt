@@ -12,19 +12,34 @@ DESCRIPTION:
  */
 
 VARIABLES:
-[LINE 16] INT: factorial = 1;
-[LINE 26] INT: limit;
+[LINE 16] INT:  = 1;
 
 
 STATEMENTS:
 [LINE 8] LOOP: for
 [LINE 17] LOOP: for
-[LINE 28] LOOP: for
 
 MAIN: 
-True
+False
 
 COMMENTS:
 [LINES 1 - 10] COMMENT: DESCRIPTION
+[LINES 23 - 34] COMMENT: /*
+int main() {
+  std ::cout << " Introduzca el numero de factoriales a calcular : ";
+  int limit;
+  std ::cin >> limit;
+  for (int i = 1; i <= limit; ++i) {
+    std ::cout << i << " ! = " << (double)Factorial(i) << std ::endl;
+  }
+  return 0;
+}
+
+*/
 
 [LINE 6] COMMENT: // Returns the factorial of the argument
+
+RETURN STATEMENTS:
+[LINE 14] RETURN: 1;
+[LINE 20] RETURN: factorial;
+

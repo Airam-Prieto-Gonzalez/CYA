@@ -39,21 +39,24 @@ class CodeAnalyser {
         /// @brief Getter del atributo main
         /// @return Un booleano que será "true" si el programa detectó una funcion principal.
         bool get_main() const;
-        /// @brief Getter del atributo variables_int
-        /// @return Referencia constante del atributo variables_int
+        /// @brief Getter del atributo variables_int_
+        /// @return Referencia constante del atributo variables_int_
         const std::map<int, std::string>& get_variables_int() const;
-        /// @brief Getter del atributo variables_double
-        /// @return Referencia constante del atributo variables_double
+        /// @brief Getter del atributo variables_double_
+        /// @return Referencia constante del atributo variables_double_
         const std::map<int, std::string>& get_variables_double() const;
-        /// @brief Getter del atributo loops
-        /// @return Referencia constante del atributo loops
+        /// @brief Getter del atributo loops_
+        /// @return Referencia constante del atributo loops_
         const std::map<std::string, std::set<int>>& get_loops() const;
-        /// @brief Getter del atributo monoline_comments
-        /// @return Referencia constante del atributo monoline_comments
+        /// @brief Getter del atributo monoline_comments_
+        /// @return Referencia constante del atributo monoline_comments_
         const std::map<int, std::string>& get_monoline_comments() const;
-        /// @brief Getter del atributo multiline_comments
-        /// @return Referencia constante del atributo multiline_comments
+        /// @brief Getter del atributo multiline_comments_
+        /// @return Referencia constante del atributo multiline_comments_
         const std::map<std::pair<int,int>, std::string>& get_multiline_comments() const;
+        /// @brief Getter del atributo return_
+        /// @return Referencia constante del atributo return_
+        const std::map<int, std::string>& get_return() const;
 
         /// @brief Setter del atributo exist_main_
         void set_main();
@@ -77,7 +80,13 @@ class CodeAnalyser {
         /// @param lines Clave del std::map multiline_comments_
         /// @param comment Valor almacenado en la clave lines
         void set_multiline_comment(std::pair<int,int> lines, std::string comment);
+        /// @brief Setter del atributo filename_
+        /// @param filename Valor que se le asignará al atributo filename_
         void set_filename(std::string filename);
+        /// @brief Setter del atributo return_
+        /// @param lines Clave del std::map return_
+        /// @param comment Valor almacenado en la clave lines
+        void set_return(int line, std::string return_statement);
 
         /// @brief Analiza el código de un archivo de texto
         /// @param output_file Archivo de texto que contiene el código a analizar
@@ -94,4 +103,5 @@ class CodeAnalyser {
         std::map<std::string, std::set<int>> loops_;
         std::map<int, std::string> monoline_comments_;
         std::map<std::pair<int,int>, std::string> multiline_comments_;
+        std::map<int, std::string> return_;
 };

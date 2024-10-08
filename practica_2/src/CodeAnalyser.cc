@@ -55,6 +55,10 @@ const std::map<std::pair<int,int>, std::string>& CodeAnalyser::get_multiline_com
     return multiline_comments_;
 }
 
+const std::map<int, std::string>& CodeAnalyser::get_return() const {
+    return return_;
+}
+
 void CodeAnalyser::set_main() {
     exist_main_ = true;
 }
@@ -83,6 +87,10 @@ void CodeAnalyser::set_filename(std::string filename) {
     filename_ = filename;
 }
 
+void CodeAnalyser::set_return(int line, std::string return_statement) {
+    return_[line] = return_statement;
+}
+
 void CodeAnalyser::AnalyseCode(std::string &input_file_name) {
     std::ifstream input_file{input_file_name};
     if (!input_file.is_open()) {
@@ -100,13 +108,14 @@ void CodeAnalyser::AnalyseCode(std::string &input_file_name) {
     std::regex monoline_comment_regex("//.*");
     std::regex multiline_comment_start_regex("\\/\\*");
     std::regex multiline_comment_end_regex("\\*\\/");
+    std::regex return_regex("return .*;");
     int line_number = 1;
-    while(getline(input_file, line)) {
+    while (getline(input_file, line)) {
         if (std::regex_search(line, multiline_comment_start_regex)) {
             int start_line = line_number;
             int end_line = start_line;
             std::string comment{line + "\n"};
-            while(getline(input_file, line)) {
+            while (getline(input_file, line)) {
                 ++end_line;
                 if (std::regex_search(line, multiline_comment_end_regex)) {
                     comment += line;
@@ -118,7 +127,7 @@ void CodeAnalyser::AnalyseCode(std::string &input_file_name) {
             }
 
         }
-        if(std::regex_match(line, main_regex)) {
+        if (std::regex_match(line, main_regex)) {
             set_main();
         }
         if (std::regex_search(line, while_regex)) {
@@ -126,15 +135,19 @@ void CodeAnalyser::AnalyseCode(std::string &input_file_name) {
         }
         if (std::regex_search(line, for_regex)) {
             set_loop("for", line_number);
-        } else if(std::regex_search(line, variable_int_regex)) {
+        } else if (std::regex_search(line, variable_int_regex)) {
             line = line.substr(line.find("int") + 4, line.size());
             set_variable_int(line_number, line);
-        } else if(std::regex_search(line, variable_double_regex)) {
+        } else if (std::regex_search(line, variable_double_regex)) {
             line = line.substr(line.find("double") + 7, line.size());
             set_variable_double(line_number, line);
         }
-        if(std::regex_search(line, monoline_comment_regex)) {
+        if (std::regex_search(line, monoline_comment_regex)) {
             set_monoline_comment(line_number, line);
+        }
+        if (std::regex_search(line, return_regex)) {
+            line = line.substr(line.find("return") + 7, line.size());
+            set_return(line_number, line);
         }
         line_number++;
     }
@@ -183,4 +196,10 @@ void CodeAnalyser::PrintAnalysis(std::ofstream &output_file) {
     for (auto comment : get_monoline_comments()) {
         output_file << "[LINE " << comment.first << "] COMMENT: " << comment.second << std::endl;
     }
+    output_file << std::endl;
+    output_file << "RETURN STATEMENTS:" << std::endl;
+    for (auto return_statement : get_return()) {
+        output_file << "[LINE " << return_statement.first << "] RETURN: " << return_statement.second << std::endl;
+    }
+    output_file << std::endl;
 }
