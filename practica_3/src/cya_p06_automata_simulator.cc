@@ -1,3 +1,31 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 3º
+// Práctica 6: Simulador de autómatas finitos
+// Autor: Airam Prieto González
+// Correo: alu0101546377@ull.edu.es
+// Fecha: 17/10/2024
+
+// Archivo cya_p06_automata_simulator.cc:   Archivo principal de la práctica 6. 
+//                                          Contiene la función main que se encarga de leer los ficheros de entrada
+//                                          y de salida, y de llamar a las funciones necesarias para la creación y simulación de un autómata finito.
+//                                          También se encarga de imprimir por pantalla el autómata y de comprobar si una cadena es aceptada o rechazada
+//                                          por el autómata.
+
+// Referencias:
+// Enlaces de interés:
+// Historial de revisiones
+// 17/10/2024 - Creación (primera versión) del código
+
+#include <iostream>
+#include <map>
+#include <set>
+#include <fstream>
+#include <string>
+#include <sstream>
+
 #include "../lib/Automata.h"
 
 int main(int argc, char *argv[]) {
@@ -31,30 +59,30 @@ int main(int argc, char *argv[]) {
     Automata automata(input_FA);
     automata.ImprimeAutomata();
     input_FA.close();
-    // Abro el fichero con las cadenas a comprobar
+
     std::ifstream input_cadena;
     input_cadena.open(argv[2]);
     if (!input_cadena.is_open()) {
         std::cerr << "Error: No se ha podido abrir el fichero de entrada." << std::endl;
         return 1;
-    } else {
-        std::string cadena{};
-        while (getline(input_cadena, cadena)) {
-            if (automata.CombruebaCadena(cadena)) {
-                // La cadena es del alfabeto del autómata, se comprueba si es aceptada
-                std::set<Estado> estados_actuales;
-                estados_actuales.insert(*(automata.getEstadoInicial()));
-                if (automata.IteraCadena(cadena, estados_actuales)) {
-                    // La cadena es aceptada por el autómata
-                } else {
-                    // La cadena no es aceptada por el autómata
-                }
-            } else {
-                // La cadena no es del alfabero del autómata
-            }
-        }
-        input_cadena.close();
     }
-
+    std::cout << "\n\nANALIZANDO CADENAS" << std::endl;
+    std::string cadena{};
+    std::set<Estado> estados_actuales;
+    Estado estado_inicial = automata.getEstadoInicial();
+    estados_actuales.insert(estado_inicial);
+    while (getline(input_cadena, cadena)) {
+        std::cout << cadena;
+        if (automata.CombruebaCadena(cadena)) {
+            if (automata.IteraCadena(cadena, estados_actuales)) {
+                std::cout << " --- Accepted" << std::endl;
+            } else {
+                std::cout << " --- Rejected" << std::endl;
+            }
+        } else {
+            std::cout << " --- invalid" << std::endl;
+        }
+    }
+    input_cadena.close();
     return 0;
 }
