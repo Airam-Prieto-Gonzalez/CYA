@@ -101,25 +101,17 @@ void Automata::EpsilonClausura (std::set<Estado> &estados_actuales) const {
 
 bool Automata::IteraCadena (std::string &cadena, std::set<Estado> &estados_actuales, int iteration) const {
     EpsilonClausura(estados_actuales);
-    if (cadena == "&") {
-        for (const Estado &estado : estados_actuales) {
+    if (iteration == cadena.size() || cadena == "&") {
+        for (const Estado& estado : estados_actuales) {
             if (estados_aceptacion_.find(estado.getId()) != estados_aceptacion_.end()) {
                 return true;
             }
+            return false;
         }
-        return false;
-    }
-    if (iteration == cadena.size()) {
-        for (const Estado &estado : estados_actuales) {
-            if (estados_aceptacion_.find(estado.getId()) != estados_aceptacion_.end()) {
-                return true;
-            }
-        }
-        return false;
     } else {
         std::set<Estado> nuevos_estados;
-        for (const Estado &estado : estados_actuales) {
-            for (const auto &transicion : estado.getMapTransiciones()) {
+        for (const Estado& estado : estados_actuales) {
+            for (const auto& transicion : estado.getMapTransiciones()) {
                 if (transicion.first == cadena[iteration]) {
                     nuevos_estados.insert(estados_.at(transicion.second));
                 }
