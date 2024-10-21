@@ -13,22 +13,19 @@
 //                          clase Alfabeto que representa un alfabeto de un
 //                          autómata finito.
 
-
 // Referencias:
 // Enlaces de interés:
 // Historial de revisiones
 // 17/10/2024 - Creación (primera versión) del código
 
-# include "../lib/Alfabeto.h"
+#include "../lib/Alfabeto.h"
 
-Alfabeto::Alfabeto () {}
+Alfabeto::Alfabeto() {}
 
-Alfabeto::Alfabeto (std::string &alfabeto) {
-    for (char &c : alfabeto) {
-        alfabeto_.insert(c);
-    }
+Alfabeto::Alfabeto(std::string &alfabeto) {
+  for (char &c : alfabeto) {
+    alfabeto_.insert(c);
+  }
 }
 
-Alfabeto::~Alfabeto () {
-    alfabeto_.clear();
-}
+Alfabeto::~Alfabeto() { alfabeto_.clear(); }
