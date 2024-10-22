@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
     return 1;
   }
   Automata automata(input_FA);
-  automata.ImprimeAutomata();
+  // automata.ImprimeAutomata();
   input_FA.close();
 
   std::ifstream input_cadena;

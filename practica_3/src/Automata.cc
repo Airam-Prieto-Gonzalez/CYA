@@ -38,6 +38,14 @@ Automata::Automata(std::ifstream &input_file) {
   for (int i = 0; i < num_estados; i++) {
     std::getline(input_file, line);
     Estado estado(line);
+    for (const auto &transicion : estado.getMapTransiciones()) {
+      if (alfabeto_.getAlfabeto().find(transicion.first) == alfabeto_.getAlfabeto().end()) {
+        if (transicion.first != '&') {
+          std::cerr << "Las trasciciones del estado " << estado.getId() << " son incorrectas, abortando..." << std::endl;
+          exit(-1);
+        }
+      }
+    }
     if (estado.getAceptacion()) {
       estados_aceptacion_.insert(estado.getId());
     }
@@ -45,6 +53,18 @@ Automata::Automata(std::ifstream &input_file) {
       estado_inicial_ = estado;
     }
     estados_.insert({estado.getId(), estado});
+  }
+  bool is_dfa = true;
+  for (const auto& estado : estados_) {
+    if (estado.second.getMapTransiciones().size() != alfabeto_.getAlfabeto().size()) {
+      is_dfa = false;
+    }
+  }
+  if (is_dfa) {
+    std::cout << "This automata is a DFA" << std::endl;
+    
+  } else {
+    std::cout << "This automata is not a DFA" << std::endl;
   }
 }
 
@@ -102,8 +122,7 @@ bool Automata::IteraCadena(std::string &cadena,
   EpsilonClausura(estados_actuales);
   if (iteration == cadena.size() || cadena == "&") {
     for (const Estado &estado : estados_actuales) {
-      if (estados_aceptacion_.find(estado.getId()) !=
-          estados_aceptacion_.end()) {
+      if (estados_aceptacion_.find(estado.getId()) != estados_aceptacion_.end()) {
         return true;
       }
       return false;
@@ -119,5 +138,4 @@ bool Automata::IteraCadena(std::string &cadena,
     }
     return IteraCadena(cadena, nuevos_estados, iteration + 1);
   }
-  return false;
 }
