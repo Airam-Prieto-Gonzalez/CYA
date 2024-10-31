@@ -1,0 +1,8 @@
+//////////////////////////////////////////////
+
+FUNCIONAMIENTO:
+    ./cya_p08_Grammar2CNF <input_file> <output_file>
+
+Descripcion de ficheros
+Descripcion del funcionamineto
+//////////////////////////////////////////////
