@@ -1,0 +1,21 @@
+
+			/////////  Forma Normal de Chomsky  /////////
+
+/// Gramática: 
+	Terminales: 	a b 
+	No Terminales: 	S A B C_b C_a D_0 D_1 
+	Simbolo inicial: S
+	Producciones: 
+	Producciones: 
+		A -> 	C_b D_0 
+		A -> 	C_a S 
+		A -> 	a 
+		B -> 	C_a D_1 
+		B -> 	C_b S 
+		B -> 	b 
+		C_a -> 	a 
+		C_b -> 	b 
+		D_0 -> 	A A 
+		D_1 -> 	B B 
+		S -> 	C_b A 
+		S -> 	C_a B 

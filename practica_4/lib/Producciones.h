@@ -1,4 +1,3 @@
-#pragma once
 
 #include <iostream>
 #include <map>
@@ -7,32 +6,37 @@
 
 #include "Simbolos.h"
 
+#pragma once
+
 class Producciones {
- public:
-    Producciones() = default;
-    
-    void InsertarProduccion (const std::string &kClave, const Simbolos &kValor) {
-        producciones_.insert(std::pair<std::string,Simbolos>(kClave,kValor));
-    }
-    void EliminarProduccion (const std::string &kClave, const Simbolos &kValor) {
-        for (auto produccion : producciones_) {
-            if (produccion.first == kClave && produccion.second.getSimbolos() == kValor.getSimbolos()) {
-                auto it = producciones_.find(produccion.first);
-                producciones_.erase(it);
-                break;
-            }
-        }
-    }
-    std::multimap<std::string,Simbolos>& getProducciones() { return producciones_; }
+public:
+  /// @brief Constructor por defecto
+  Producciones() = default;
 
-    friend std::ostream &operator<<(std::ostream &os, const Producciones& producciones) {
-        os << "\tProducciones: " << std::endl;
-        for (const auto &produccion : producciones.producciones_) {
-            os << "\t\t" << produccion.first << " -> " << produccion.second;
-        }
-        return os;
-    }
+  /// @brief Getter de las producciones
+  /// @return std::multimap<std::string,Simbolos> que representa el atributo
+  /// producciones_
+  std::multimap<std::string, Simbolos> &getProducciones() {
+    return producciones_;
+  }
 
- private:
-    std::multimap<std::string,Simbolos> producciones_;
+  /// @brief Inserta una producción en el multimap de producciones
+  /// @param kClave std::string que representa la clave de la producción
+  /// @param kValor Objeto de la clase Simbolos que representa el valor de la
+  /// producción
+  void InsertarProduccion(const std::string &kClave, const Simbolos &kValor);
+
+  /// @brief Elimina una producción del multimap de producciones
+  /// @param kClave std::string que representa la clave de la producción
+  /// @param kValor Objeto de la clase Simbolos que representa el valor de la
+  /// producción
+  void EliminarProduccion(const std::string &kClave, const Simbolos &kValor);
+
+  /// @brief Elimina todas las producciones de un símbolo no terminal
+  /// @param kClave std::string que representa la clave de la producción
+  friend std::ostream &operator<<(std::ostream &os,
+                                  const Producciones &producciones);
+
+private:
+  std::multimap<std::string, Simbolos> producciones_;
 };
