@@ -3,6 +3,23 @@
 FUNCIONAMIENTO:
     ./cya_p08_Grammar2CNF <input_file> <output_file>
 
-Descripcion de ficheros
-Descripcion del funcionamineto
+Este programa en C++ procesa un archivo de entrada que describe una gramática siguiente formato:
+1. La primera línea contiene un número entero que indica la cantidad de símbolos no terminales.
+2. Las siguientes líneas contienen los símbolos no terminales, uno por línea.
+3. Luego, la siguiente línea contiene el número de símbolos terminales.
+4. Las líneas siguientes contienen los símbolos terminales, uno por línea.
+5. A continuación, una línea contiene el número de producciones.
+6. Las siguientes líneas contienen cada producción en formato: 
+   "Símbolo_No_Terminal Secuencia_Símbolos", donde el símbolo que genera la producción está separado de la secuencia generada por un espacio.
+
+El simbolo de arranque será el primero de los simbolos no terminales que se lea
+
+Cabe destacar que la gramatica que entre no debe tener producciones vacias, salvo una en el simbolo de arranque, ni producciones unitarias.
+
+Funcionamiento del programa:
+1. Abre y lee el archivo de entrada.
+2. Lee el número de símbolos no terminales y los almacena en un conjunto para su uso posterior.
+3. Lee y guarda los símbolos terminales de manera similar.
+4. Lee el número de producciones y almacena cada producción en una estructura que asocia el símbolo generador con su secuencia de símbolos.
+5. Al final, el programa construye la gramatica y la transforma en forma normal de Chomsky si es valida, mostrando el resultado en el fichero de salida
 //////////////////////////////////////////////
