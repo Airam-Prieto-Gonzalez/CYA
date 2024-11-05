@@ -1,3 +1,23 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 3º
+// Práctica 8: Gramáticas en forma normal de Chomsky
+// Autor: Airam Prieto González
+// Correo: alu0101546377@ull.edu.es
+// Fecha: 31/10/2024
+
+// Archivo Simbolos.h: Declaración de la clase Simbolos
+// Contiene un vector de strings que representa los simbolos de una gramática
+// Los simbolos pueden ser terminales o no terminales
+// Los simbolos no pueden contener espacios
+
+// Referencias:
+// Enlaces de interés:
+// Historial de revisiones
+// 31/10/2024 - Creación (primera versión) del código
+
 #include <iostream>
 #include <string>
 #include <vector>

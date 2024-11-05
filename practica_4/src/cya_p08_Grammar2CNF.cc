@@ -3,27 +3,18 @@
 // Grado en Ingeniería Informática
 // Asignatura: Computabilidad y Algoritmia
 // Curso: 3º
-// Práctica 6: Simulador de autómatas finitos
+// Práctica 8: Gramáticas en forma normal de Chomsky
 // Autor: Airam Prieto González
 // Correo: alu0101546377@ull.edu.es
-// Fecha: 17/10/2024
+// Fecha: 31/10/2024
 
-// Archivo cya_p06_automata_simulator.cc:   Archivo principal de la práctica 6.
-//                                          Contiene la función main que se
-//                                          encarga de leer los ficheros de
-//                                          entrada y de salida, y de llamar a
-//                                          las funciones necesarias para la
-//                                          creación y simulación de un autómata
-//                                          finito. También se encarga de
-//                                          imprimir por pantalla el autómata y
-//                                          de comprobar si una cadena es
-//                                          aceptada o rechazada por el
-//                                          autómata.
+// Archivo cya_p08_automata_simulator.cc:   Archivo principal de la práctica 8
+// Contiene la implementación del codigo que dada una gramática la transforma a la forma normal de Chomsky
 
 // Referencias:
 // Enlaces de interés:
 // Historial de revisiones
-// 17/10/2024 - Creación (primera versión) del código
+// 31/10/2024 - Creación (primera versión) del código
 
 #include <fstream>
 #include <iostream>

@@ -1,3 +1,21 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 3º
+// Práctica 8: Gramáticas en forma normal de Chomsky
+// Autor: Airam Prieto González
+// Correo: alu0101546377@ull.edu.es
+// Fecha: 31/10/2024
+
+// Archivo Producciones.h: Declaración de la clase Producciones
+// Contiene un multimap de strings que representa las producciones de una gramática
+// Las claves son los símbolos no terminales y los valores son los símbolos de las producciones
+
+// Referencias:
+// Enlaces de interés:
+// Historial de revisiones
+// 31/10/2024 - Creación (primera versión) del código
 
 #include <iostream>
 #include <map>

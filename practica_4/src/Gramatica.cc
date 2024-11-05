@@ -1,3 +1,21 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 3º
+// Práctica 8: Gramáticas en forma normal de Chomsky
+// Autor: Airam Prieto González
+// Correo: alu0101546377@ull.edu.es
+// Fecha: 31/10/2024
+
+// Archivo Gramatica.cc:   Archivo de implementación de la clase Gramatica
+// Contiene la implementación de los métodos de la clase Gramatica
+
+// Referencias:
+// Enlaces de interés:
+// Historial de revisiones
+// 31/10/2024 - Creación (primera versión) del código
+
 #include "../lib/Gramatica.h"
 
 bool Gramatica::ProduccionesVacias() {

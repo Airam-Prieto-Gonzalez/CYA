@@ -1,3 +1,23 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 3º
+// Práctica 8: Gramáticas en forma normal de Chomsky
+// Autor: Airam Prieto González
+// Correo: alu0101546377@ull.edu.es
+// Fecha: 31/10/2024
+
+// Archivo Gramatica.h: Declaración de la clase Gramatica
+// Contiene un objeto de la clase Simbolos que representa los simbolos terminales
+// Contiene un objeto de la clase Simbolos que representa los simbolos no terminales
+// Contiene un objeto de la clase Producciones que representa las producciones de la gramática
+
+// Referencias:
+// Enlaces de interés:
+// Historial de revisiones
+// 31/10/2024 - Creación (primera versión) del código
+
 #include <iostream>
 #include <string>
 #include <vector>
