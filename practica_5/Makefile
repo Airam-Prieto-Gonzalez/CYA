@@ -1,4 +1,4 @@
 main:
-	g++ -o GreedyAlgorithm main.cc PointTypes.cc SubTree.cc PointSet.cc
+	g++ -o GreedyAlgorithm src/main.cc src/PointTypes.cc src/SubTree.cc src/PointSet.cc
 clean:
 	rm GreedyAlgorithm
