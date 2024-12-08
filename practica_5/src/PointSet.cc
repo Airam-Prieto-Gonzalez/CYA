@@ -1,8 +1,7 @@
-#include "PointSet.hh"
-
 #include <algorithm>
 
-#include "SubTree.hh"
+#include "../lib/PointSet.hh"
+#include "../lib/SubTree.hh"
 
 using namespace EMST;
 
@@ -29,21 +28,25 @@ void point_set::write(std::ostream &os) const {
 /// @return void
 void point_set::EMST(void) {
   CyA::arc_vector av;
+  // Calculamos el vector de arcos
   compute_arc_vector(av);
   forest st;
+  // Inicializamos el vector de subárboles con un subárbol por cada punto
   for (const CyA::point &p : *this) {
     sub_tree s;
     s.add_point(p);
     st.push_back(s);
   }
+  // Ordenamos los arcos por peso
   for (const CyA::weigthed_arc &a : av) {
     int i, j;
+    // Buscamos los subárboles incidentes a los puntos del arco
     find_incident_subtrees(st, a.second, i, j);
     if (i != j) {
+      // Si los subárboles son distintos, los fusionamos
       merge_subtrees(st, a, i, j);
     }
   }
-
   emst_ = st[0].get_arcs();
 }
 
@@ -53,6 +56,7 @@ void point_set::EMST(void) {
 void point_set::compute_arc_vector(CyA::arc_vector &av) const {
   av.clear();
   const int n = size();
+  // Calculamos la distancia euclídea entre todos los pares de puntos
   for (int i = 0; i < n - 1; ++i) {
     const CyA::point &p_i = (*this)[i];
     for (int j = i + 1; j < n; ++j) {
@@ -61,6 +65,7 @@ void point_set::compute_arc_vector(CyA::arc_vector &av) const {
       av.push_back(std::make_pair(dist, std::make_pair(p_i, p_j)));
     }
   }
+  // Ordenamos los arcos por peso
   std::sort(av.begin(), av.end());
 }
 
@@ -68,10 +73,11 @@ void point_set::find_incident_subtrees(const forest &st, const CyA::arc &a,
                                        int &i, int &j) const {
   i = j = -1;
   for (int k = 0; k < st.size(); ++k) {
+    // si el subárbol k contiene el punto a.first, i = k
     if (st[k].contains(a.first)) {
       i = k;
     }
-
+    // si el subárbol k contiene el punto a.second, j = k
     if (st[k].contains(a.second)) {
       j = k;
     }
@@ -86,11 +92,9 @@ void point_set::merge_subtrees(forest &st, const CyA::weigthed_arc &a, int i,
 
 double point_set::compute_cost(void) const {
   double cost = 0.0;
-
   for (const CyA::arc &a : emst_) {
     cost += euclidean_distance(a);
   }
-
   return cost;
 }
 

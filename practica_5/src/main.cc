@@ -1,7 +1,7 @@
-#include "PointSet.hh"
-#include "PointTypes.hh"
-#include "SubTree.hh"
-#include "Utils.hh"
+#include "../lib/PointSet.hh"
+#include "../lib/PointTypes.hh"
+#include "../lib/SubTree.hh"
+#include "../lib/Utils.hh"
 
 using namespace EMST;
 using namespace CyA;
@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
   point_set ps(points);
   ps.EMST();
   ps.write_tree(std::cout);
+  std::cout << "Cost: " << ps.get_cost() << std::endl;
 
   return 0;
 }

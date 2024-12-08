@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <utility>
 
-#include "SubTree.hh"
+#include "../lib/SubTree.hh"
 
 namespace EMST
 {

@@ -1,6 +1,6 @@
-#include "PointTypes.hh"
-
 #include <iomanip>
+
+#include "../lib/PointTypes.hh"
 
 std::ostream& operator<<(std::ostream& os, const CyA::point_vector& ps) {
   os << ps.size() << std::endl;
