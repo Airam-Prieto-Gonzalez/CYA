@@ -1,3 +1,21 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 3º
+// Práctica 11: Mínimo Árbol de Expansión Euclídeo
+// Autor: Airam Prieto González
+// Correo: alu0101546377@ull.edu.es
+// Fecha: 8/12/2024
+
+// Archivo PointSet.cc: Archivo de implementación de la clase point_set
+// Contiene la implementación de los métodos de la clase point_set
+
+// Referencias:
+// Enlaces de interés:
+// Historial de revisiones
+// 31/10/2024 - Creación (primera versión) del código
+
 #include <algorithm>
 
 #include "../lib/PointSet.hh"
@@ -7,7 +25,8 @@ using namespace EMST;
 
 /// @brief Constructor de la clase point_set
 /// @param points Vector de puntos
-point_set::point_set(const CyA::point_vector &points) : CyA::point_vector(points), emst_() {}
+point_set::point_set(const CyA::point_vector &points)
+    : CyA::point_vector(points), emst_() {}
 
 /// @brief  Destructor de la clase point_set
 /// @param  void
@@ -69,6 +88,12 @@ void point_set::compute_arc_vector(CyA::arc_vector &av) const {
   std::sort(av.begin(), av.end());
 }
 
+/// @brief  Busca los subárboles incidentes a los puntos del arco
+/// @param  st Vector de subárboles
+/// @param  a Arco
+/// @param  i Índice del subárbol incidente al primer punto del arco
+/// @param  j Índice del subárbol incidente al segundo punto del arco
+/// @return void
 void point_set::find_incident_subtrees(const forest &st, const CyA::arc &a,
                                        int &i, int &j) const {
   i = j = -1;
@@ -84,12 +109,21 @@ void point_set::find_incident_subtrees(const forest &st, const CyA::arc &a,
   }
 }
 
+/// @brief  Fusiona dos subárboles
+/// @param  st Vector de subárboles
+/// @param  a Arco
+/// @param  i Índice del subárbol incidente al primer punto del arco
+/// @param  j Índice del subárbol incidente al segundo punto del arco
+/// @return void
 void point_set::merge_subtrees(forest &st, const CyA::weigthed_arc &a, int i,
                                int j) const {
   st[i].merge(st[j], a);
   st.erase(st.begin() + j);
 }
 
+/// @brief  Calcula el coste del árbol de expansión mínima
+/// @param  void
+/// @return Coste del árbol de expansión mínima
 double point_set::compute_cost(void) const {
   double cost = 0.0;
   for (const CyA::arc &a : emst_) {
@@ -98,22 +132,24 @@ double point_set::compute_cost(void) const {
   return cost;
 }
 
+/// @brief  Calcula la distancia euclídea entre dos puntos
+/// @param  a Arco
+/// @return Distancia euclídea entre los puntos del arco
 double point_set::euclidean_distance(const CyA::arc &a) const {
   const CyA::point &p_i = a.first;
   const CyA::point &p_j = a.second;
-
   const double dx = p_i.first - p_j.first;
   const double dy = p_i.second - p_j.second;
-
   return std::sqrt(dx * dx + dy * dy);
 }
 
+/// @brief  Escribe en un flujo de salida el árbol de expansión mínima
+/// @param  os Flujo de salida
+/// @return void
 void point_set::write_tree(std::ostream &os) const {
   os << "graph EMST {" << std::endl;
-
   for (const CyA::arc &a : emst_) {
     os << "  " << a.first << " -- " << a.second << std::endl;
   }
-
   os << "}" << std::endl;
 }

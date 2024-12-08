@@ -1,3 +1,22 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Computabilidad y Algoritmia
+// Curso: 3º
+// Práctica 11: Mínimo Árbol de Expansión Euclídeo
+// Autor: Airam Prieto González
+// Correo: alu0101546377@ull.edu.es
+// Fecha: 8/12/2024
+
+// Archivo PointSet.hh: Archivo de cabecera de la clase point_set
+// Contiene la declaración de la clase point_set, que representa un conjunto de
+// puntos
+
+// Referencias:
+// Enlaces de interés:
+// Historial de revisiones
+// 31/10/2024 - Creación (primera versión) del código
+
 #pragma once
 
 #include "PointTypes.hh"
@@ -32,6 +51,5 @@ class point_set : public CyA::point_vector {
                       int j) const;
 
   double compute_cost(void) const;
-
   double euclidean_distance(const CyA::arc& a) const;
 };
